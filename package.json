@@ -4,7 +4,10 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "sudo docker build -t discord_bot . && npm run docker_tag && npm run docker_push",
+    "docker_tag": "sudo docker tag discord_bot:latest 527044138162.dkr.ecr.ap-northeast-2.amazonaws.com/discord_bot:latest",
+    "docker_push": "sudo docker push 527044138162.dkr.ecr.ap-northeast-2.amazonaws.com/discord_bot:latest"
   },
   "repository": {
     "type": "git",
@@ -17,6 +20,13 @@
   },
   "homepage": "https://github.com/Stdev17/code-reviewer#readme",
   "dependencies": {
+    "@types/koa": "^2.11.0",
+    "@types/koa-router": "^7.0.42",
     "discord.js": "^11.5.1"
+  },
+  "devDependencies": {
+    "koa": "^2.11.0",
+    "koa-bodyparser": "^4.2.1",
+    "koa-router": "^7.4.0"
   }
 }
